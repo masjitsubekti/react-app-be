@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Rekapitulasi Kehadiran Pegawai</title>
+    <style>
+      .table {
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif; 
+        width:100%;
+      }
+      .head-table th{
+        padding-top: 11px;
+        padding-bottom: 11px;
+        font-size:7pt;
+      }
+      .body-table td,th{
+        border: 1px solid black;
+        font-size:7pt;
+      }
+      .person-table td,th{
+        font-size:10pt;
+      }
+      .text-center{
+        text-align:center;
+      }
+      .text-left{
+        text-align:left;
+      }
+      .text-right{
+        text-align:right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <table class="table" cellpadding="1">
+        <tbody>
+          <tr>
+            <td class="text-center"><span style="font-size: 10pt; font-weight: 500;">PT. GREATSOFT SOLUSI INDONESIA</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 10pt; font-weight: 500;">LAPORAN REKAPITULASI PER PERIODE KEHADIRAN PEGAWAI</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 10pt; font-weight: 500;">{{pegawai.bulan}} {{pegawai.tahun}}</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 8pt; font-weight: 500;">DIVISI : {{pegawai.unor}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table" cellpadding="5">
+        <thead class="head-table">
+          <tr>
+            <th width="3%"  class="text-center">NO</th>
+            <th width="11%" class="text-center">NIP</th>
+            <th width="20%" class="text-center">NAMA</th>
+            <th width="7%" class="text-center">JUMLAH HARI KERJA (HARI)</th>
+            <th width="7%" class="text-center">JUMLAH HADIR (HARI)</th>
+            <th width="6%" class="text-center">PULANG CEPAT</th>
+            <th width="5%" class="text-center">ALPHA</th>
+            <th width="5%" class="text-center">MANGKIR</th>
+            <th width="5%" class="text-center">DINAS LUAR</th>
+            <th width="5%" class="text-center">DINAS DALAM</th>
+            <th width="6%" class="text-center">DINAS DALAM (LIBNAS)</th>
+            <th width="5%" class="text-center">IZIN</th>
+            <th width="5%" class="text-center">CUTI</th>
+            <th width="5%" class="text-center">SAKIT</th>
+          </tr>
+        </thead>
+        <tbody class="body-table">
+          {{#data}}
+          <tr>
+            <td class="text-center">{{inc @index}}</td>
+            <td class="text-center">{{nip}}</td>
+            <td>{{nama}}</td>
+            <td class="text-center">{{jml_hari}}</td>
+            <td class="text-center">{{jml_hari_hadir}}</td>
+            <td class="text-center">{{jml_hari_pulang_cepat}}</td>
+            <td class="text-center">{{ket_tk}}</td>
+            <td class="text-center">{{ket_m}}</td>
+            <td class="text-center">{{ket_dl}}</td>
+            <td class="text-center">{{ket_dd}}</td>
+            <td class="text-center">{{ket_dlb}}</td>
+            <td class="text-center">{{ket_i}}</td>
+            <td class="text-center">{{ket_ch}}</td>
+            <td class="text-center">{{ket_sk}}</td>
+          </tr>
+          {{/data}}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

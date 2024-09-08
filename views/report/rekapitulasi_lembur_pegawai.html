@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Rekapitulasi Lembur Pegawai</title>
+    <style>
+      .table {
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif; 
+        width:100%;
+      }
+      .head-table th{
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-size:8pt;
+      }
+      .body-table td,th{
+        border: 1px solid black;
+        font-size:8pt;
+      }
+      .person-table td,th{
+        font-size:9pt;
+      }
+      .text-center{
+        text-align:center;
+      }
+      .text-left{
+        text-align:left;
+      }
+      .text-right{
+        text-align:right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <table class="table" cellpadding="1">
+        <tbody>
+          <tr>
+            <td class="text-center"><span style="font-size: 10pt; font-weight: 500;">REKAPITULASI JUMLAH LEMBUR PER PEGAWAI</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 10pt; font-weight: 500;">PT. GREATSOFT SOLUSI INDONESIA</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 10pt; font-weight: 500;">{{pegawai.bulan}} {{pegawai.tahun}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table" cellpadding="2">
+        <tbody class="person-table">
+            <tr>
+                <td style="width:5%;">NIP</td>
+                <td style="width:2%;">:</td>
+                <td style="width:50%;">{{pegawai.nip}}</td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>:</td>
+                <td>{{pegawai.nama}}</td>
+            </tr>
+            <tr>
+                <td>Jabatan</td>
+                <td>:</td>
+                <td>{{pegawai.jabatan}}</td>
+            </tr>
+            <tr>
+                <td>Gaji Pokok</td>
+                <td>:</td>
+                <td>{{pegawai.gaji_pokok}}</td>
+            </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table" cellpadding="5">
+        <thead class="head-table">
+          <tr>
+            <th width="10%"  class="text-center">TANGGAL</th>
+            <th width="10%" class="text-center">HARI</th>
+            <th width="10%" class="text-center">START TIME</th>
+            <th width="10%" class="text-center">END TIME</th>
+            <th width="30%" class="text-center">KETERANGAN</th>
+            <th width="15%" class="text-center">TOTAL JAM</th>
+            <th width="15%" class="text-center">NOMINAL</th>
+          </tr>
+        </thead>
+        <tbody class="body-table">
+          {{#data}}
+          <tr>
+            <td class="text-center">{{tanggal}}</td>
+            <td class="text-center">{{hari}}</td>
+            <td class="text-center">{{jam_lembur_awal}}</td>
+            <td class="text-center">{{jam_lembur_akhir}}</td>
+            <td>{{keterangan}}</td>
+            <td class="text-center">{{total_lembur}}</td>
+            <td class="text-right">{{pembulatan}}</td>
+          </tr>
+          {{/data}}
+          <tr>
+            <td  class="text-center" colspan="5">TOTAL</td>
+            <td class="text-center">{{pegawai.total_jam_lembur}}</td>
+            <td class="text-right">{{pegawai.pembulatan_total}}</td>
+          </tr>
+          <tr>
+            <td  class="text-center" colspan="6"></td>
+            <td class="text-right">{{pegawai.pembulatan_tot_lembur}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

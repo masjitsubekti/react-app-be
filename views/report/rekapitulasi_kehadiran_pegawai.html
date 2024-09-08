@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Rekapitulasi Kehadiran Pegawai</title>
+    <style>
+      .table {
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif; 
+        width:100%;
+      }
+      .keterangan {
+        font-family: Arial, Helvetica, sans-serif; 
+        font-size:8pt;
+      }
+      .head-table th{
+        padding: 6px;
+        font-size:7pt;
+      }
+      .body-table td,th{
+        border: 1px solid black;
+        font-size:7pt;
+      }
+      .person-table td,th{
+        font-size:13px;
+      }
+      .text-center{
+        text-align:center;
+      }
+      .text-left{
+        text-align:left;
+      }
+      .text-right{
+        text-align:right;
+      }
+      .line-title {
+        border: 0;
+        border-style: inset;
+        border-top: 1px solid #000;
+        padding-bottom:10px;
+        margin-top:15px;
+      }
+      ._purple{
+        background-color: rgb(165, 5, 165);
+      }
+      ._green{
+        background-color: rgb(11, 161, 11);
+      }
+      ._green_young{
+        background-color: rgb(88, 235, 88);
+      }
+      ._blue{
+        background-color: rgb(3, 146, 202);
+      }
+      ._yellow{
+        background-color: rgb(247, 231, 19);
+      }
+      ._red{
+        background-color: red;
+      }
+      ._grey{
+        background-color: grey;
+      }
+      ._pink{
+        background-color: rgb(241, 156, 170);
+      }
+      ._brown{
+        background-color: rgb(185, 45, 45);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <table class="table" cellpadding="1">
+        <tbody>
+          <tr>
+            <td class="text-center"><span style="font-size: 11pt; font-weight: 500;">PT. GREATSOFT SOLUSI INDONESIA</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 11pt; font-weight: 500;">LAPORAN PER PERIODE KEHADIRAN PEGAWAI</span></td>
+          </tr>
+          <tr>
+            <td class="text-center"><span style="font-size: 11pt; font-weight: 500;">{{pegawai.bulan}} {{pegawai.tahun}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table" cellpadding="2">
+        <tbody class="person-table">
+            <tr>
+                <td style="width:5%;">Nama</td>
+                <td style="width:2%;">:</td>
+                <td style="width:50%;">{{pegawai.nama}}</td>
+            </tr>
+            <tr>
+                <td>NIP</td>
+                <td>:</td>
+                <td>{{pegawai.nip}}</td>
+            </tr>
+            <tr>
+                <td>Kantor</td>
+                <td>:</td>
+                <td>{{pegawai.instansi}}</td>
+            </tr>
+            <tr>
+                <td>Jabatan</td>
+                <td>:</td>
+                <td>{{pegawai.jabatan}}</td>
+            </tr>
+        </tbody>
+      </table>
+      <table class="table" cellpadding="5" style="margin-top:10px;">
+        <thead class="head-table">
+          <tr>
+            <th rowspan="2" width="8%"  class="text-center">TANGGAL</th>
+            <th rowspan="2" width="10%" class="text-center">HARI</th>
+            <th rowspan="2" width="5%" class="text-center">MASUK</th>
+            <th colspan="2" width="10%" class="text-center">TELAT MASUK</th>
+            <th rowspan="2" width="5%" class="text-center">PULANG</th>
+            <th colspan="2" width="10%" class="text-center">PULANG CEPAT</th>
+            <th colspan="2" width="10%" class="text-center">AKUMULASI</th>
+            <th rowspan="2" width="5%" class="text-center">KETERANGAN</th>
+            <th rowspan="2" width="25%" class="text-center">KETERANGAN IZIN/CUTI/DINAS LUAR</th>
+          </tr>
+          <tr>
+            <!-- TELAT MASUK -->
+            <th width="5%" class="text-center">JAM</th>
+            <th width="5%" class="text-center">MENIT</th>
+            <!-- PULANG CEPAT -->
+            <th width="5%" class="text-center">JAM</th>
+            <th width="5%" class="text-center">MENIT</th>
+            <!-- AKUMULASI -->
+            <th width="5%" class="text-center">JAM</th>
+            <th width="5%" class="text-center">MENIT</th>
+          </tr>
+        </thead>
+        <tbody class="body-table">
+          {{#data}}
+          <tr class="{{colorRow}}">
+            <td class="text-center">{{tanggal}}</td>
+            <td class="text-center">{{hari}}</td>
+            <td class="text-center">{{absen_masuk}}</td>
+            <td class="text-center">{{telat_jam}}</td>
+            <td class="text-center">{{telat_menit}}</td>
+            <td class="text-center">{{absen_pulang}}</td>
+            <td class="text-center">{{pulang_cepat_jam}}</td>
+            <td class="text-center">{{pulang_cepat_menit}}</td>
+            <td class="text-center">{{total_jam}}</td>
+            <td class="text-center">{{total_menit}}</td>
+            <td class="text-center">{{keterangan}}</td>
+            <td class="text-center">{{ket_ijin}}</td>
+          </tr>
+          {{/data}}
+          <tr>
+            <td class="text-center" colspan="2">TOTAL</td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center" colspan="3"></td>
+            <td class="text-center"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="keterangan" style="margin-top:10px;">
+        <p style="margin-bottom:4px; font-size: 8pt;">Keterangan : </p>
+        <table class="table">
+            <tr>
+                <td style="width:20%; vertical-align: top;">
+                    <table>
+                        <tr>
+                            <td class="_purple" style="width: 30%; padding:2px;">&nbsp;</td>
+                            <td style="width: 50%;">: LIBUR</td>
+                        </tr>
+                        <tr>
+                            <td class="_green" style="width: 30%; padding:2px;">&nbsp;</td>
+                            <td style="width: 50%;"> : IZIN/CUTI</td>
+                        </tr>
+                        <tr>
+                            <td class="_green_young" style="width: 30%; padding:2px;">&nbsp;</td>
+                            <td style="width: 50%;"> : SAKIT</td>
+                        </tr>
+                        <tr>
+                            <td class="_blue" style="width: 30%; padding:2px;">&nbsp;</td>
+                            <td style="width: 50%;"> : DINAS LUAR</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:20%; vertical-align: top;">
+                    <table>
+                        <tr>
+                            <td class="_yellow" style="width: 30%;">&nbsp;</td>
+                            <td style="width: 50%;">: PERINGATAN</td>
+                        </tr>
+                        <tr>
+                            <td class="_red" style="width: 30%;">&nbsp;</td>
+                            <td style="width: 50%;"> : TERLAMBAT</td>
+                        </tr>
+                        <tr>
+                            <td class="_grey" style="width: 30%;">&nbsp;</td>
+                            <td style="width: 50%;"><span style="font-size: 7pt;"> : PULANG CEPAT</span></td>
+                        </tr>
+                        <tr>
+                            <td class="_pink" style="width: 30%;">&nbsp;</td>
+                            <td style="width: 50%;"> : MANGKIR</td>
+                        </tr>
+                        <tr>
+                            <td class="_brown" style="width: 30%;">&nbsp;</td>
+                            <td style="width: 50%;"> : ALPHA</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:20%; vertical-align: top;">
+                    <table>
+                        <tr>
+                            <td style="width: 10%;"><span>H</span></td>
+                            <td style="width: 50%;"><span> : HADIR</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>CBS</span></td>
+                            <td style="width: 50%;"><span> : CUTI BESAR</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>TK</span></td>
+                            <td style="width: 50%;"><span> : ALPHA</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>WFH</span></td>
+                            <td style="width: 50%;"><span style="font-size: 7pt;"> : WORK FROM HOME</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>M</span></td>
+                            <td style="width: 50%;"><span> : MANGKIR</span></td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:20%; vertical-align: top;">
+                    <table>
+                        <tr>
+                            <td style="width: 10%;"><span>CBR</span></td>
+                            <td style="width: 50%;"><span> : CUTI BERSALIN</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>CS</span></td>
+                            <td style="width: 50%;"><span> : CUTI SAKIT</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>DL</span></td>
+                            <td style="width: 50%;"><span> : DINAS LUAR</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>SK</span></td>
+                            <td style="width: 50%;"><span> : SAKIT</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>DD</span></td>
+                            <td style="width: 50%;"><span> : DINAS DALAM</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>TM</span></td>
+                            <td style="width: 50%;"><span style="font-size: 7pt;"> : TUGAS MARKETING</span></td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:20%; vertical-align: top;">
+                    <table>
+                        <tr>
+                            <td style="width: 10%;"><span>I</span></td>
+                            <td style="width: 50%;"><span> : IZIN</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>CAP</span></td>
+                            <td style="width: 50%;"><span style="font-size: 6pt;"> : CUTI ALASAN PENTING</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>CTH</span></td>
+                            <td style="width: 50%;"><span> : CUTI TAHUNAN</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>J</span></td>
+                            <td style="width: 50%;"><span> : IJIN PERJAM</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;"><span>TS</span></td>
+                            <td style="width: 50%;"><span> : TUGAS SOLUTION</span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
