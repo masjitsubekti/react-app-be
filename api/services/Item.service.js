@@ -41,7 +41,7 @@ const getDataPagination = async function (req = {}) {
 };
 
 /**
- * Function Get all jenis jabatan
+ * Function Get all item
  * @param {*} data
  * @returns
  */
@@ -66,7 +66,7 @@ const getAll = async function () {
 };
 
 /**
- * Function get by id jenis jabatan
+ * Function get by id item
  * @param {*} id
  * @returns
  */
@@ -91,7 +91,7 @@ const getById = async function (id) {
 };
 
 /**
- * Function Save jenis jabatan
+ * Function Save item
  * @param {*} data
  * @returns
  */
@@ -117,7 +117,7 @@ const save = async function (req) {
 };
 
 /**
- * Function update jenis jabatan
+ * Function update item
  * @param {*} id
  * @param {*} req
  */
@@ -141,7 +141,7 @@ const update = async function (id, req) {
 };
 
 /**
- * Function delete jenis jabatan
+ * Function delete item
  * @param {*} req
  */
 const softDelete = async function (req) {
