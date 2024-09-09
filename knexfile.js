@@ -17,9 +17,9 @@ module.exports = {
   development: {
     client: "pg",
     connection:
-      // "postgres://postgres:S@y@Br0nt0@114.30.89.34:5432/db_presensi_gsi_2",
+      "postgres://postgres:S@y@Br0nt0@114.30.89.34:5432/belajar_react",
       // connection:
-      "postgres://postgres:12345678@localhost:5432/belajar-react",
+      // "postgres://postgres:12345678@localhost:5432/belajar-react",
     migrations: {
       directory: __dirname + "/db/migrations",
     },
